@@ -141,14 +141,12 @@ class SalesManager extends Employee{
     return salesID;
   }
 
-
-
   public String toString(){
     return null;
   }
 
   double bonus() {
-    return 0;
+    return this.getClients().size() * 2000 + this.getEmployees().size() * 5000;
   }
 }
 
@@ -192,6 +190,6 @@ class SalesAssociate extends Employee{
   }
 
   private double bonus(){
-    return 0;
+    return this.getClients().size() * 1000;
   }
 }
