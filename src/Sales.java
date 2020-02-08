@@ -28,7 +28,6 @@ class Client{
     this.clientName = clientName;
   }
 
-
   public double totalSales(){
     return 0;
   }
@@ -42,7 +41,8 @@ class Client{
   }
 
   public String toString(){
-    return null;
+    return "Client: " + this.clientName + ". Sales Employee: " + this.salesPerson.getEmployeeName() +
+            " " + this.salesPerson.salesID;
   }
 }
 
@@ -52,9 +52,20 @@ class Client{
 abstract class  Employee{
 
   private ArrayList<Client> clients;
+  String employeeName;
+  long salesID;
 
   public void setClients(ArrayList<Client> clients) {
     this.clients = clients;
+  }
+
+  //setters
+  public void setEmployeeName(String employeeName) {
+    this.employeeName = employeeName;
+  }
+
+  public String getEmployeeName() {
+    return employeeName;
   }
 
   /**
@@ -97,20 +108,14 @@ abstract class  Employee{
 class SalesManager extends Employee{
 
   //fields
-  String employeeName;
   ArrayList<Employee> employees;
   SalesManager manager;
-  long salesID;
+
 
   public SalesManager(int id, String name) {
     super();
     this.salesID=id;
     this.employeeName=name;
-  }
-
-  //setters
-  public void setEmployeeName(String employeeName) {
-    this.employeeName = employeeName;
   }
 
   public void setEmployees(ArrayList<Employee> employees) {
@@ -125,10 +130,6 @@ class SalesManager extends Employee{
     this.salesID = salesID;
   }
   //getters
-  public String getEmployeeName() {
-    return employeeName;
-  }
-
   public ArrayList<Employee> getEmployees() {
     return employees;
   }
@@ -142,7 +143,16 @@ class SalesManager extends Employee{
   }
 
   public String toString(){
-    return null;
+    String toReturn =  "Sales Manager: " + this.employees + " " + this. ". Employees:";
+    for (int i = 0 ; i < getEmployees().size() ; i++){
+      toReturn += " " + getEmployees().get(i);
+    }
+    toReturn += ". Clients: ";
+    for (int i = 0 ; i < getClients().size() ; i++){
+      toReturn += " " + getClients().get(i).getClientName() + " " + getClients().get(i).getClientID();
+    }
+    toReturn += ". Bonus: " + this.bonus();
+    return toReturn;
   }
 
   double bonus() {
@@ -155,18 +165,12 @@ class SalesManager extends Employee{
 class SalesAssociate extends Employee{
 
   //fields
-  String employeeName;
   SalesManager manager;
-  long salesID;
 
   public SalesAssociate(int id, String name) {
     super();
     this.salesID=id;
     this.employeeName=name;
-  }
-
-  public void setEmployeeName(String employeeName) {
-    this.employeeName = employeeName;
   }
 
   public void setManager(SalesManager manager) {
@@ -175,10 +179,6 @@ class SalesAssociate extends Employee{
 
   public void setSalesID(long salesID) {
     this.salesID = salesID;
-  }
-
-  public String getEmployeeName() {
-    return employeeName;
   }
 
   public SalesManager getManager() {
@@ -191,5 +191,18 @@ class SalesAssociate extends Employee{
 
   private double bonus(){
     return this.getClients().size() * 1000;
+  }
+
+  public String toString(){
+    String toReturn =  "Sales Associate: " + this.getManager() + ". Employees:";
+    for (int i = 0 ; i < getEmployees().size() ; i++){
+      toReturn += " " + getEmployees().get(i);
+    }
+    toReturn += ". Clients: ";
+    for (int i = 0 ; i < getClients().size() ; i++){
+      toReturn += " " + getClients().get(i).getClientName() + " " + getClients().get(i).getClientID();
+    }
+    toReturn += ". Bonus: " + this.bonus();
+    return toReturn;
   }
 }
