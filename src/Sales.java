@@ -2,6 +2,12 @@ import java.util.ArrayList;
 
 
 class Client{
+
+  public Client(int clientID, String clientName) {
+    this.clientID = clientID;
+    this.clientName = clientName;
+  }
+
   int clientID;
   Employee salesPerson;
   String clientName;
@@ -96,6 +102,12 @@ class SalesManager extends Employee{
   SalesManager manager;
   long salesID;
 
+  public SalesManager(int id, String name) {
+    super();
+    this.salesID=id;
+    this.employeeName=name;
+  }
+
   //setters
   public void setEmployeeName(String employeeName) {
     this.employeeName = employeeName;
@@ -148,6 +160,12 @@ class SalesAssociate extends Employee{
   String employeeName;
   SalesManager manager;
   long salesID;
+
+  public SalesAssociate(int id, String name) {
+    super();
+    this.salesID=id;
+    this.employeeName=name;
+  }
 
   public void setEmployeeName(String employeeName) {
     this.employeeName = employeeName;
