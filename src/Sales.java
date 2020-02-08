@@ -40,6 +40,10 @@ class Client{
     return clientName;
   }
 
+  public String stringOutput(){
+    return this.clientName + " " + this.clientID;
+  }
+
   public String toString(){
     return "Client: " + this.clientName + ". Sales Employee: " + this.salesPerson.getEmployeeName() +
             " " + this.salesPerson.salesID;
@@ -143,14 +147,20 @@ class SalesManager extends Employee{
   }
 
   public String toString(){
-    String toReturn =  "Sales Manager: " + this.employees + " " + this. ". Employees:";
+    String toReturn =  "Sales Manager: " + this.employeeName  + ". Employees:";
     for (int i = 0 ; i < getEmployees().size() ; i++){
       toReturn += " " + getEmployees().get(i);
     }
+
+
     toReturn += ". Clients: ";
-    for (int i = 0 ; i < getClients().size() ; i++){
-      toReturn += " " + getClients().get(i).getClientName() + " " + getClients().get(i).getClientID();
+    for (Client client: getClients()){
+      toReturn += " " + client.stringOutput() + "," ;
+
     }
+
+    toReturn = toReturn.substring(0, toReturn.length() - 1);
+
     toReturn += ". Bonus: " + this.bonus();
     return toReturn;
   }
@@ -195,13 +205,15 @@ class SalesAssociate extends Employee{
 
   public String toString(){
     String toReturn =  "Sales Associate: " + this.getManager() + ". Employees:";
-    for (int i = 0 ; i < getEmployees().size() ; i++){
-      toReturn += " " + getEmployees().get(i);
-    }
+
     toReturn += ". Clients: ";
-    for (int i = 0 ; i < getClients().size() ; i++){
-      toReturn += " " + getClients().get(i).getClientName() + " " + getClients().get(i).getClientID();
+    for (Client client: getClients()){
+      toReturn += " " + client.stringOutput() + "," ;
+
     }
+
+    toReturn = toReturn.substring(0, toReturn.length() - 1);
+
     toReturn += ". Bonus: " + this.bonus();
     return toReturn;
   }
