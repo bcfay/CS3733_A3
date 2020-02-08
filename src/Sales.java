@@ -3,8 +3,10 @@ import java.util.ArrayList;
 
 class Client{
   int clientID;
+    String clientName;
 
-  public void setClientID(int clientID) {
+
+    public void setClientID(int clientID) {
     this.clientID = clientID;
   }
 
@@ -12,7 +14,6 @@ class Client{
     this.clientName = clientName;
   }
 
-  String clientName;
 
   public double totalSales(){
     return 0;
@@ -28,6 +29,11 @@ class Client{
 
   public String toString(){
     return null;
+  }
+
+  public Client(int clientID, String clientName){
+      this.clientID = clientID;
+      this.clientName = clientName;
   }
 }
 
@@ -51,6 +57,11 @@ class SalesManager extends Employee{
   ArrayList<Employee> employees;
   SalesManager manager;
   long salesID;
+
+  public SalesManager(long salesID, String employeeName){
+      this.salesID = salesID;
+      this.employeeName = employeeName;
+  }
 
   //setters
   public void setEmployeeName(String employeeName) {
@@ -85,14 +96,12 @@ class SalesManager extends Employee{
     return salesID;
   }
 
-
-
   public String toString(){
     return null;
   }
 
   double bonus() {
-    return 0;
+    return this.getClients().size() * 2000 + this.getEmployees().size() * 5000;
   }
 
 
@@ -103,6 +112,11 @@ class SalesAssociate extends Employee{
   String employeeName;
   SalesManager manager;
   long salesID;
+
+  public SalesAssociate(long salesID, String employeeName){
+      this.salesID = salesID;
+      this.employeeName = employeeName;
+  }
 
   public void setEmployeeName(String employeeName) {
     this.employeeName = employeeName;
@@ -129,6 +143,7 @@ class SalesAssociate extends Employee{
   }
 
   private double bonus(){
-    return 0;
+    return this.getClients().size() * 1000;
   }
+
 }
