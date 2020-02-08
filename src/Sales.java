@@ -9,10 +9,6 @@ class Client{
     }
 }
 
-
-public class Sales {
-
-}
 abstract class  Employee{
 
     private ArrayList<com.sun.security.ntlm.Client> clients;
@@ -23,5 +19,21 @@ abstract class  Employee{
 
     public ArrayList<com.sun.security.ntlm.Client> getClients(){
         return null;
+    }
+
+    class SalesAssociate extends Employee{
+
+      //fields
+      String employeeName;
+      SalesManager manager;
+      long salesID;
+
+      private double bonus(){
+        return 0;
+      }
+
+
+
+
     }
 }
