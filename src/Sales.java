@@ -1,25 +1,27 @@
-import com.sun.security.ntlm.Client;
 import java.util.ArrayList;
 
-abstract class  Employee{
+class Client{
+    int clientID;
+    String clientName;
 
-  private ArrayList<Client> clients;
-
-  public boolean addClient(){
-    return false;
-  }
-
-  public ArrayList<Client> getClients(){
-    return null;
-  }
+    public double totalSales(){
+        return 0;
+    }
 }
-
-
-
-
-
 
 
 public class Sales {
 
+}
+abstract class  Employee{
+
+    private ArrayList<com.sun.security.ntlm.Client> clients;
+
+    public boolean addClient(){
+        return false;
+    }
+
+    public ArrayList<com.sun.security.ntlm.Client> getClients(){
+        return null;
+    }
 }
