@@ -45,8 +45,7 @@ class Client{
   }
 
   public String toString(){
-    return "Client: " + this.clientName + ". Sales Employee: " + this.salesPerson.getEmployeeName() +
-            " " + this.salesPerson.salesID;
+    return "Client: " + this.clientName + ". Sales Employee: " + this.salesPerson.getEmployeeName() + " " + this.salesPerson.salesID;
   }
 }
 
@@ -151,11 +150,16 @@ class SalesManager extends Employee{
     for (int i = 0 ; i < getEmployees().size() ; i++){
       toReturn += " " + getEmployees().get(i);
     }
+    toReturn += ". ";
 
+    if(getClients().size()!=0) {
+      toReturn += "Clients: ";
+      for (Client client : getClients()) {
+        toReturn += " " + client.stringOutput() + ",";
 
-    toReturn += ". Clients: ";
-    for (Client client: getClients()){
-      toReturn += " " + client.stringOutput() + "," ;
+      }
+
+      toReturn = toReturn.substring(0, toReturn.length() - 1);
 
     }
 
@@ -204,7 +208,7 @@ class SalesAssociate extends Employee{
   }
 
   public String toString(){
-    String toReturn =  "Sales Associate: " + this.getManager() + ". Employees:";
+    String toReturn =  "Sales Associate: " + this.getManager();
 
     toReturn += ". Clients: ";
     for (Client client: getClients()){

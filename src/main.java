@@ -11,5 +11,21 @@ public class main {
         Client sarah = new Client(478, "Sarah");
         Client daniel = new Client(269, "Daniel");
 
+        jane.addClient(john);
+        jane.addClient(sarah);
+
+        tom.addClient(david);
+
+        harry.addClient(ann);
+
+        nancy.addClient(daniel);
+        nancy.addClient(susan);
+
+        harry.setManager();
+
+        System.out.println(ann.toString());
+        System.out.println(nancy.toString());
+        System.out.println(jane.toString());
+
     }
 }
