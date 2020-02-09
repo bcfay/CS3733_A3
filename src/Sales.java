@@ -57,6 +57,23 @@ abstract class  Employee{
   private ArrayList<Client> clients = new ArrayList<>();
   String employeeName;
   long salesID;
+
+  public long getSalesID() {
+    return salesID;
+  }
+
+  public SalesManager getManager() {
+    return manager;
+  }
+
+  public void setSalesID(long salesID) {
+    this.salesID = salesID;
+  }
+
+  public void setManager(SalesManager manager) {
+    this.manager = manager;
+  }
+
   SalesManager manager;
 
 
@@ -123,6 +140,7 @@ class SalesManager extends Employee{
   }
 
   public void addEmployee(Employee employee){
+    employee.setManager(this);
     employees.add(employee);
   }
 
