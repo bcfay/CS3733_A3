@@ -54,9 +54,11 @@ class Client{
 
 abstract class  Employee{
 
-  private ArrayList<Client> clients;
+  private ArrayList<Client> clients = new ArrayList<>();
   String employeeName;
   long salesID;
+  SalesManager manager;
+
 
   public void setClients(ArrayList<Client> clients) {
     this.clients = clients;
@@ -102,7 +104,7 @@ abstract class  Employee{
   }
 
   public ArrayList<Client> getClients(){
-    return null;
+    return clients;
   }
 }
 
@@ -111,14 +113,17 @@ abstract class  Employee{
 class SalesManager extends Employee{
 
   //fields
-  ArrayList<Employee> employees;
-  SalesManager manager;
+  ArrayList<Employee> employees = new ArrayList<>();
 
 
   public SalesManager(int id, String name) {
     super();
     this.salesID=id;
     this.employeeName=name;
+  }
+
+  public void addEmployee(Employee employee){
+    employees.add(employee);
   }
 
   public void setEmployees(ArrayList<Employee> employees) {
@@ -147,8 +152,10 @@ class SalesManager extends Employee{
 
   public String toString(){
     String toReturn =  "Sales Manager: " + this.employeeName  + ". Employees:";
+
+
     for (int i = 0 ; i < getEmployees().size() ; i++){
-      toReturn += " " + getEmployees().get(i);
+      toReturn += " " + getEmployees().get(i).getEmployeeName();
     }
     toReturn += ". ";
 
@@ -178,9 +185,6 @@ class SalesManager extends Employee{
 
 class SalesAssociate extends Employee{
 
-  //fields
-  SalesManager manager;
-
   public SalesAssociate(int id, String name) {
     super();
     this.salesID=id;
@@ -208,7 +212,7 @@ class SalesAssociate extends Employee{
   }
 
   public String toString(){
-    String toReturn =  "Sales Associate: " + this.getManager();
+    String toReturn =  "Sales Associate: " + this.getEmployeeName();
 
     toReturn += ". Clients: ";
     for (Client client: getClients()){

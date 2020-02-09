@@ -21,7 +21,8 @@ public class main {
         nancy.addClient(daniel);
         nancy.addClient(susan);
 
-        harry.setManager();
+       jane.addEmployee(harry);
+       tom.addEmployee(nancy);
 
         System.out.println(ann.toString());
         System.out.println(nancy.toString());
